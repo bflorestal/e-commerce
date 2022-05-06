@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% if app.user is not null %}
+<h1>{{ 'compte.Wel'|trans }} {{ app.user.nom }} {{ app.user.prenom }}</h1>
+ {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
+ {% else %}
+<div style="text-align:center; margin-right:250px; margin-left:250px">
+    <h1>{{ 'compte.titleModifyAccount'|trans }}</h1>
+    {{ form(modifProfil) }}
+</div>
+{% endif %}
+
+{% else %}
+        <p>{{ 'app.PleaseConnect'|trans }}</p>
+{% endif %}
+{% endblock %}

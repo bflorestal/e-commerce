@@ -43,6 +43,8 @@ JeuxSup: Games Delete
 JeuxUpdate: Updated Games
 ImageNone: Picture not found
 JeuxAjout: Games added
+userIntrouvable: User not available !
+CompteUpdate: Account updated !
 
 app:
   PleaseConnect: Please connect to acces to this page !
@@ -66,3 +68,4 @@ compte:
   ContactUS: If you want to delete your account, please contact us.
   AdminPartOne: Administrative management
   GestionProduit: Manage products
+  titleModifyAccount: Modify my account

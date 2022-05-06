@@ -23,6 +23,16 @@
  </table>
  <hr>
  <p>{{ 'compte.ContactUS'|trans }}</p>
+
+
+ {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
+ {% else %}
+<div style="text-align:center; margin-right:250px; margin-left:250px">
+    <h1>{{ 'compte.titleModifyAccount'|trans }}</h1>
+    <a class="btn btn-success" href="{{ path('app_edit_profil', {'id' : app.user.id }) }}">{{ 'compte.titleModifyAccount'|trans }}</a>
+</div>
+{% endif %}
+
  <hr>
  {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN')%}
 <h1>{{ 'compte.AdminPartOne'|trans }}</h1>
