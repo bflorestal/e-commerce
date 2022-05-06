@@ -1,3 +1,21 @@
 body {
-    background-color: lightgray;
+  background-color: #1487d4;
+}
+label,
+h1,
+p,
+td {
+  color: white;
+}
+.png {
+  border-radius: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+input {
+  border-radius: 10px;
+}
+textarea {
+  width: 550px;
+  height: 200px;
 }

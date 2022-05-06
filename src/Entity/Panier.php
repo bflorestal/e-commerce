@@ -16,12 +16,17 @@ class Panier
     #[ORM\Column(type: 'datetime')]
     private $date;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'boolean')]
     private $etat;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'panier')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
+
+    public function __construct()
+    {
+        $this->etat = false;
+    }
 
     public function getId(): ?int
     {
@@ -40,12 +45,12 @@ class Panier
         return $this;
     }
 
-    public function getEtat(): ?string
+    public function getEtat(): ?bool
     {
         return $this->etat;
     }
 
-    public function setEtat(string $etat): self
+    public function setEtat(bool $etat): self
     {
         $this->etat = $etat;
 
