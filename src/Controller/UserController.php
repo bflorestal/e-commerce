@@ -13,6 +13,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UserController extends AbstractController
 {
+    // Permet l'ouverture de la vue compte/index.html.twig
     #[Route('/monCompte', name: 'app_compte')]
     public function index()
     {

@@ -2,6 +2,7 @@
 
 {% block body %}
 {% if app.user is not null %}
+<!-- Affichage des stats dans un tableau -->
 {% if is_granted('ROLE_SUPER_ADMIN') %}
 <h1>{{ 'user.titleStat'|trans }}</h1>
 <p>{{ 'user.descriptionStat'|trans }}</p>

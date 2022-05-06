@@ -3,7 +3,7 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-<div style="text-align:center">
+    <div style="text-align:center; margin-right:250px; margin-left:250px">
     <h1>{{ 'accueil.Inscription'|trans }}</h1>
 
     {{ form_start(registrationForm) }}
@@ -17,6 +17,8 @@
             <br>
         {{ form_row(registrationForm.email) }}
             <br>
+        </div>
+        <div style="text-align:center; margin-right:350px; margin-left:350px">
         {{ form_row(registrationForm.agreeTerms) }}
             <br>
         <button class="btn btn-success" type="submit" class="btn">Register</button>

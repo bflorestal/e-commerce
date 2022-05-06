@@ -2,8 +2,10 @@
 
 {% block body %}
 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
+<div style="text-align:center; margin-right:250px; margin-left:250px">
     <h1>{{ 'produit.titleAddProduit'|trans }}</h1>
     {{ form(ajoutProduit) }}
+</div>
 {% endif %}
 {% endblock %}
     

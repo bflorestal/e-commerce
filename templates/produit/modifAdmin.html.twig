@@ -3,7 +3,9 @@
 {% block body %}
 
 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
-    <h1>{{ 'produit.ModifJeux'|trans }}</h1>
-    {{ form(editProduit) }}
+    <div style="text-align:center; margin-right:250px; margin-left:250px">
+        <h1>{{ 'produit.ModifJeux'|trans }}</h1>
+        {{ form(editProduit) }}
+    </div>
 {% endif %}
 {% endblock %}

@@ -63,6 +63,6 @@ compte:
   prenom: Surname
   email: Email
   dtCreation: Creation date
-  ContactUS: Please contact us to delete your account
+  ContactUS: If you want to delete your account, please contact us.
   AdminPartOne: Administrative management
   GestionProduit: Manage products

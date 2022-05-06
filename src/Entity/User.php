@@ -147,6 +147,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    
     // remplissage auto de la date
     public function __construct()
     {
@@ -165,6 +166,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->dateInscription = $dateInscription;
 
     }
+    
     /**
      * @return Collection<int, Panier>
      */
@@ -179,19 +181,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             $this->panier[] = $panier;
             $panier->setUser($this);
         }
-
         return $this;
     }
 
     public function removePanier(Panier $panier): self
     {
         if ($this->panier->removeElement($panier)) {
-            // set the owning side to null (unless already changed)
             if ($panier->getUser() === $this) {
                 $panier->setUser(null);
             }
         }
-
         return $this;
     }
 }

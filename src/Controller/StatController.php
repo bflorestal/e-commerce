@@ -18,6 +18,7 @@ class StatController extends AbstractController
     {
         // Connexion à la base de données
         $em = $doctrine->getManager();
+        // Récupération en fonction de la fonction findUserWhere depuis Userrepository.php
         $users = $em->getRepository(User::class)->findUserWhere();
 
         return $this->render('stat/index.html.twig', [

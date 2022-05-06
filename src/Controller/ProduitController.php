@@ -19,6 +19,7 @@ class ProduitController extends AbstractController
     {
         // Connexion à la base de données
         $em = $doctrine->getManager();
+        // récupération de toutes les données
         $produit = $em->getRepository(Produit::class)->findAll();
         
         return $this->render('produit/index.html.twig', [
@@ -37,7 +38,7 @@ class ProduitController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-
+            // Insertion de la photo uniquement si le form est valid et envoyé
             $photo = $form->get('photo')->getData();
         
             if ($photo) {

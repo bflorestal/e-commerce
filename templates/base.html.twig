@@ -17,7 +17,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
 
-             <!-- Afficher un message -->
+        <!-- Afficher un message -->
         {% for type, messages in app.flashes %}
             {% for m in messages %}
                 <p class="alert alert-{{ type }}"> {{ m }}</p>
@@ -25,9 +25,10 @@
         {% endfor %}
         
     </head>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Affichage de la page d'accueil conditionné en fonction de l'état de connexion -->
+    <nav style="background-color:#4DB125;" class="navbar navbar-expand-lg">
     <img class="png" src="../img/logo.png" alt="Logo Micromania">
-        <div class=" navbar" id="navbarSupportedContent">
+        <div style="background-color:#4DB125;" class=" navbar" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 {% if app.user %}
                 {% if is_granted('ROLE_SUPER_ADMIN') %}

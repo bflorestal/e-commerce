@@ -1,5 +1,6 @@
 .env
 .DS_Store
+uploads
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
