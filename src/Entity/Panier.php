@@ -29,6 +29,10 @@ class Panier
     #[ORM\Column(type: 'integer')]
     private $quantite;
 
+    #[ORM\ManyToOne(targetEntity: produit::class, inversedBy: 'Produit')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $produit;
+
     public function __construct()
     {
         $this->etat = false;
@@ -95,6 +99,18 @@ class Panier
     public function setQuantite(int $quantite): self
     {
         $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getProduit(): ?produit
+    {
+        return $this->produit;
+    }
+
+    public function setProduit(?produit $produit): self
+    {
+        $this->produit = $produit;
 
         return $this;
     }

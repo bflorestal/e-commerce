@@ -69,3 +69,11 @@ compte:
   AdminPartOne: Administrative management
   GestionProduit: Manage products
   titleModifyAccount: Modify my account
+
+Panier:
+  Commandes: Ordered
+  id: ID
+  montant: Price
+  date: Date
+  NoCommande: No ordered !
+  detail: Details

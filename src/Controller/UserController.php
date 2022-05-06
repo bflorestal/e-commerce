@@ -9,16 +9,26 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Form\UserType;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
+use App\Entity\Panier;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UserController extends AbstractController
 {
     // Permet l'ouverture de la vue compte/index.html.twig
-    #[Route('/monCompte', name: 'app_compte')]
-    public function index()
+    #[Route('/monCompte/{id}', name: 'app_compte')]
+    public function index(Panier $user = null, Request $request, ManagerRegistry $doctrine)
     {
-        return $this->render('compte/index.html.twig');
+        // récupération de l'id en paramètre de la route
+        $idUser = $request->attributes->get('_route_params');
+
+        // Récupération des commandes liés à l'utilisateurs
+        $ems = $doctrine->getManager();
+        $usersCommande = $ems->getRepository(Panier::class)->findOrderByUser($idUser);
+
+        return $this->render('compte/index.html.twig', [
+            'paniers' => $usersCommande,
+         ]);
     }
 
     #[Route('/editProfile/{id}', name:'app_edit_profil')]
@@ -40,7 +50,7 @@ class UserController extends AbstractController
         }
 
      return $this->render('compte/edit.html.twig', [
-        'modifProfil' => $form->createView()
+        'modifProfil' => $form->createView(),
      ]);
     }
 }

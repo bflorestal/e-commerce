@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -33,6 +35,14 @@ class Produit
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $photo;
+
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Panier::class)]
+    private $Produit;
+
+    public function __construct()
+    {
+        $this->Produit = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -95,6 +105,36 @@ class Produit
     public function setPhoto(string $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Panier>
+     */
+    public function getProduit(): Collection
+    {
+        return $this->Produit;
+    }
+
+    public function addProduit(Panier $produit): self
+    {
+        if (!$this->Produit->contains($produit)) {
+            $this->Produit[] = $produit;
+            $produit->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduit(Panier $produit): self
+    {
+        if ($this->Produit->removeElement($produit)) {
+            // set the owning side to null (unless already changed)
+            if ($produit->getProduit() === $this) {
+                $produit->setProduit(null);
+            }
+        }
 
         return $this;
     }

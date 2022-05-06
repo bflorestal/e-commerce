@@ -22,4 +22,5 @@ class PanierController extends AbstractController
             'paniers' => $paniers,
         ]);
     }
+    
 }

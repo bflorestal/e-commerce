@@ -27,6 +27,31 @@
 
  {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
  {% else %}
+
+<h1>{{ 'Panier.Commandes'|trans }}</h1>
+{% if paniers is not empty %}
+<table class="table" border="1">
+        <thead>
+            <tr>
+                <th>{{ 'Panier.id'|trans }}</th>
+                <th>{{ 'Panier.montant'|trans }}</th>
+                <th>{{ 'Panier.date'|trans }}</th>
+            </tr>
+       </thead>
+        <tbody>
+        {% for panier in paniers %}
+        <tr>
+            <td>{{ panier.id }}</td>
+            <td>{{ panier.montant }} €</td>
+            <td>{{ panier.date|date('Y-m-d') }}</td>
+        </tr>
+        {% endfor %}
+       </tbody>
+{% else %}
+        <p>{{ 'Panier.NoCommande'|trans }}</p>
+{% endif %}
+ </table>
+
 <div style="text-align:center; margin-right:250px; margin-left:250px">
     <h1>{{ 'compte.titleModifyAccount'|trans }}</h1>
     <a class="btn btn-success" href="{{ path('app_edit_profil', {'id' : app.user.id }) }}">{{ 'compte.titleModifyAccount'|trans }}</a>
