@@ -1,3 +1,12 @@
+Nom: Name
+Prenom: Surname
+Email: E-mail
+Password: Password
+Sauvegarder: Save
+Image (JPG, PNG): Picture (JPG, PNG)
+Prix: Price in €
+add: Add a new product
+
 accueil:
   Produit: Product
   Connexion: Login-In
@@ -7,3 +16,26 @@ accueil:
   enTantQue: You are logged in as
   Jeux: Games
   Compte: Account
+
+produit:
+  nom: Name
+  description: Description
+  dispo: Availablity
+  prix: Price
+  photo: Picture
+  ajouter: Add
+  sup: Delete
+  modif: Edit
+  details: Details
+  Panier: Shopping basket
+  addPanier : Add to shopping basket
+  titleProduit: Our games available!
+  titleAddProduit: Add a new product
+
+# Translation of pop-up
+
+JeuxIntrouvable: Games not found
+JeuxSup: Games Delete
+JeuxUpdate: Updated Games
+ImageNone: Picture not found
+JeuxAjout: Games added

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% if app.user is not null %}
+<div style="text-align:center">
+    <table class="table" border="1">
+        <thead>
+            <tr>
+                <th>{{ 'produit.nom'|trans }}</th>
+                <th>{{ 'produit.description'|trans }}</th>
+                <th>{{ 'produit.prix'|trans }}</th>
+                <th>{{ 'produit.dispo'|trans }}</th>
+                <th>{{ 'produit.photo'|trans }}</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                {% else %}
+                <th>{{ 'produit.ajouter'|trans }}</th>
+                {% endif %}
+            </tr>
+       </thead>
+        <tbody>
+        <tr>
+            <td>{{ produit.nom }}</td>
+            <td>{{ produit.description }}</td>
+            <td>{{ produit.prix }} €</td>
+            <td>{{ produit.stock }}</td>
+
+             <td>{% if produit.photo is not null %}
+                <img src="{{ asset('uploads/' ~ produit.photo ) }}" style="width: 200px;" alt="">
+             {% endif %}
+             </td>
+             {% if is_granted('ROLE_ADMIN') %}
+             {% else %}
+             <td>
+                 <a class="btn btn-success" href="{{ path('produit_edit', {'id' : produit.id }) }}">{{ 'produit.addPanier'|trans }}</a>
+             </td>
+             {% endif %}
+        </tr>
+       </tbody>
+    </table>
+</div>
+{% else %}
+    <p>Merci de vous connecter pour accéder à cet espace !</p>
+{% endif %}
+{% endblock %}

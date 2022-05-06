@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}
+    <h1>Modifier le jeux</h1>
+    {{ form(editProduit) }}
+{% endif %}
+{% endblock %}

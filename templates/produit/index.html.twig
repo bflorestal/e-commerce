@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% if app.user is not null %}
+{% if is_granted('ROLE_ADMIN') %}
+<h1>{{ 'produit.titleAddProduit'|trans }}</h1>
+       <a class="btn btn-success" href="{{ path('produit_add_admin') }}">{{ 'add'|trans }}</a>
+    <hr>
+{% endif %}
+<h1>{{ 'produit.titleProduit'|trans }}</h1>
+{% if produits is not empty %}
+    <table class="table" border="1">
+        <thead>
+            <tr>
+                <th>{{ 'produit.nom'|trans }}</th>
+                <th>{{ 'produit.description'|trans }}</th>
+                <th>{{ 'produit.photo'|trans }}</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                        <th></th>
+                        <th></th>
+                {% else %}
+                        <th>{{ 'produit.details'|trans }}</th>
+                {% endif %}
+            </tr>
+       </thead>
+        <tbody>
+        {% for prod in produits %}
+        <tr>
+            <td>{{ prod.nom }}</td>
+            <td>{{ prod.description }}</td>
+             <td>{% if prod.photo is not null %}
+                <img src="{{ asset('uploads/' ~ prod.photo ) }}" style="width: 200px;" alt="">
+             {% endif %}
+             </td>
+            <td>
+                <a class="btn btn-success" href="{{ path('produit_edit', {'id' : prod.id }) }}">{{ 'produit.details'|trans }}</a>
+            </td>
+             {% if is_granted('ROLE_ADMIN') %}
+            <td>
+                <a class="btn btn-warning" href="{{ path('produit_edit_admin', {'id' : prod.id }) }}">{{ 'produit.modif'|trans }}</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" href="{{ path('produit_delete', {'id' : prod.id }) }}">{{ 'produit.sup'|trans }}</a>
+            </td>
+             {% endif %}
+        </tr>
+        {% endfor %}
+       </tbody>
+{% else %}
+    <p>Il n'y a aucun Jeux disponible.</p>
+{% endif %}
+ </table>
+{% else %}
+    <p>Merci de vous connecter pour accéder à cet espace !</p>
+{% endif %}
+{% endblock %}

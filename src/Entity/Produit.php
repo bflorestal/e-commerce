@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
+#[UniqueEntity('nom')]
 class Produit
 {
     #[ORM\Id]
@@ -20,12 +22,16 @@ class Produit
     private $description;
 
     #[ORM\Column(type: 'float')]
+    #[Assert\NotBlank]
+    #[Assert\Positive]
     private $prix;
 
     #[ORM\Column(type: 'integer')]
+    #[Assert\NotBlank]
+    #[Assert\Positive]
     private $stock;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $photo;
 
     public function getId(): ?int

@@ -49,8 +49,8 @@ class RegistrationAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example:
-        return new RedirectResponse($this->urlGenerator->generate('/app_produit'));
+        // a la connexion redirect vers la page des produits
+        return new RedirectResponse($this->urlGenerator->generate('app_produit'));
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

@@ -16,25 +16,38 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
+             <!-- Afficher un message -->
+        {% for type, messages in app.flashes %}
+            {% for m in messages %}
+                <p class="alert alert-{{ type }}"> {{ m }}</p>
+            {% endfor %}
+        {% endfor %}
+        
     </head>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img src="img/logo.png" alt="Logo Micromania">
-
+    <img class="png" src="../img/logo.png" alt="Logo Micromania">
         <div class=" navbar" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 {% if app.user %}
                     <li class="nav-item active">
-                        <i class="fas fa-gamepad"></i><a class="nav-link" href="{{ path('app_login')}}"><h2>{{ 'accueil.Jeux'|trans }}</h2></a>
+                        <i class="fas fa-gamepad"></i><a class="nav-link" href="{{ path('app_produit')}}"><h4>{{ 'accueil.Jeux'|trans }}</h4></a>
                     </li>
                     <li class="nav-item active">
-                        <i class="fas fa-user-circle"></i><a class="nav-link" href="{{ path('app_login')}}"><h2>{{ 'accueil.Compte'|trans }}</h2></a>
+                        <i class="fas fa-user-circle"></i><a class="nav-link" href="{{ path('app_login')}}"><h4>{{ 'accueil.Compte'|trans }}</h4></a>
+                    </li>
+                    <li class="nav-item active">
+                        <i class="fas fa-user-circle"></i><a class="nav-link" href="{{ path('app_login')}}"><h4>{{ 'accueil.Panier'|trans }}</h4></a>
+                    </li>
+                    <li class="nav-item active">
+                        <i class="fas fa-sign-out-alt"></i><a class="nav-link" href="{{ path('app_logout')}}"><h4>{{ 'accueil.Deconnexion'|trans }}</h4></a>
                     </li>
                 {% else %}
                     <li class="nav-item active">
-                        <i class="fas fa-user"></i><a class="nav-link" href="{{ path('app_login')}}"><h2>{{ 'accueil.Connexion'|trans }}</h2></a>
+                        <i class="fas fa-user"></i><a class="nav-link" href="{{ path('app_login')}}"><h4>{{ 'accueil.Connexion'|trans }}</h4></a>
                     </li>
                     <li class="nav-item">
-                        <i class="fas fa-user-edit"></i><a class="nav-link" href="{{ path('app_register')}}"><h2>{{ 'accueil.Inscription'|trans }}</h2></a>
+                        <i class="fas fa-user-edit"></i><a class="nav-link" href="{{ path('app_register')}}"><h4>{{ 'accueil.Inscription'|trans }}</h4></a>
                     </li>
                 {% endif %}
             </ul>
