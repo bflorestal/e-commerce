@@ -17,6 +17,7 @@ accueil:
   Jeux: Games
   Compte: Account
   Stat: Statistical
+  Wel: Welcome to Micromania !
 
 produit:
   nom: Name
@@ -29,7 +30,7 @@ produit:
   modif: Edit
   details: Details
   Panier: Shopping basket
-  addPanier : Add to shopping basket
+  addPanier : Add to shopping card
   titleProduit: Our games available!
   titleAddProduit: Add a new product
   ModifJeux: Modify a game
@@ -55,3 +56,13 @@ user:
   role: Role
   NoUser: There is no user registered today !
   descriptionStat: Users registered today from newest to oldest.
+  
+compte:
+  Wel: Welcome
+  nom: Name
+  prenom: Surname
+  email: Email
+  dtCreation: Creation date
+  ContactUS: Please contact us to delete your account
+  AdminPartOne: Administrative management
+  GestionProduit: Manage products

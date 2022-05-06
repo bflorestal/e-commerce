@@ -11,18 +11,12 @@ use App\Entity\User;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class StatController extends AbstractController
+class UserController extends AbstractController
 {
-    #[Route('/statistiques', name: 'app_stat')]
-    public function index(ManagerRegistry $doctrine, Request $request): Response
+    #[Route('/monCompte', name: 'app_compte')]
+    public function index()
     {
-        // Connexion à la base de données
-        $em = $doctrine->getManager();
-        $users = $em->getRepository(User::class)->findUserWhere();
-
-        return $this->render('stat/index.html.twig', [
-            'users' => $users,
-        ]);
+        return $this->render('compte/index.html.twig');
     }
 }
 

@@ -7,13 +7,16 @@
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
-
+    {% if app.user %}
+        <h1>{{ 'accueil.Wel'|trans }}</h1>
+        <hr>
     {% if app.user %}
         <div class="mb-3">
-            {{ 'accueil.enTantQue'|trans }} {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">{{ 'accueil.Deconnexion'|trans }} <i class="fas fa-sign-out-alt"></i></a>
+            {{ 'accueil.enTantQue'|trans }} {{ app.user.userIdentifier }}. <br>
+            <a style="color:white" href="{{ path('app_logout') }}">{{ 'accueil.Deconnexion'|trans }} <i class="fas fa-sign-out-alt"></i></a>
         </div>
     {% endif %}
-    <hr>
+    {% else %}
     <div style="text-align:center">
         <h1 class="h3 mb-3 font-weight-normal,chpCo">{{ 'accueil.Connexion'|trans }}</h1>
         <label class="chpCo" for="inputEmail">Email</label>
@@ -41,4 +44,5 @@
         </button>
     </form>
 </div>
+{% endif %}
 {% endblock %}

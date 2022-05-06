@@ -3,8 +3,6 @@
 {% block body %}
 {% if app.user is not null %}
 {% if is_granted('ROLE_SUPER_ADMIN') %}
-
-
 <h1>{{ 'user.titleStat'|trans }}</h1>
 <p>{{ 'user.descriptionStat'|trans }}</p>
 {% if users is not empty %}

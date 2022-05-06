@@ -2,7 +2,7 @@
 
 {% block body %}
 {% if app.user is not null %}
-{% if is_granted('ROLE_ADMIN') %}
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
 <h1>{{ 'produit.titleAddProduit'|trans }}</h1>
        <a class="btn btn-success" href="{{ path('produit_add_admin') }}">{{ 'add'|trans }}</a>
     <hr>
@@ -35,7 +35,7 @@
             <td>
                 <a class="btn btn-success" href="{{ path('produit_edit', {'id' : prod.id }) }}">{{ 'produit.details'|trans }}</a>
             </td>
-             {% if is_granted('ROLE_ADMIN') %}
+             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
             <td>
                 <a class="btn btn-warning" href="{{ path('produit_edit_admin', {'id' : prod.id }) }}">{{ 'produit.modif'|trans }}</a>
             </td>
