@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% if app.user is not null %}
+{% if is_granted('ROLE_SUPER_ADMIN') %}
+
+
+<h1>{{ 'user.titleStat'|trans }}</h1>
+<p>{{ 'user.descriptionStat'|trans }}</p>
+{% if users is not empty %}
+    <table class="table" border="1">
+        <thead>
+            <tr>
+                <th>{{ 'user.nom'|trans }}</th>
+                <th>{{ 'user.prenom'|trans }}</th>
+                <th>{{ 'user.email'|trans }}</th>
+                <th>{{ 'user.date'|trans }}</th>
+            </tr>
+       </thead>
+        <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.nom }}</td>
+            <td>{{ user.prenom }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.date|date('d/m/Y H:i:s') }}</td>
+        </tr>
+        {% endfor %}
+       </tbody>
+{% else %}
+    <p>{{ 'user.NoUser'|trans }}</p>
+{% endif %}
+ </table>
+{% else %}
+    <p>{{ 'app.PleaseConnect'|trans }}</p>
+{% endif %}
+{% endif %}
+{% endblock %}

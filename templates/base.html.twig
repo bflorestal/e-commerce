@@ -30,6 +30,11 @@
         <div class=" navbar" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 {% if app.user %}
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <li class="nav-item active">
+                        <i class="fas fa-smile"></i><a class="nav-link" href="{{ path('app_stat')}}"><h4>{{ 'accueil.Stat'|trans }}</h4></a>
+                    </li>
+                {% endif %}
                     <li class="nav-item active">
                         <i class="fas fa-gamepad"></i><a class="nav-link" href="{{ path('app_produit')}}"><h4>{{ 'accueil.Jeux'|trans }}</h4></a>
                     </li>

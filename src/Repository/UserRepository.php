@@ -88,4 +88,17 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findUserWhere()
+    {
+        return $this->createQueryBuilder('u')
+        ->andWhere('u.roles NOT LIKE :role')
+        ->setParameter('role', "%ADMIN%")
+        ->andWhere('u.date LIKE :dts')
+        ->setParameter('dts', date('Y-m-d')."%")
+        ->orderBy('u.date', 'DESC')
+        ->getQuery()
+        ->getResult()
+        ;
+    }
 }

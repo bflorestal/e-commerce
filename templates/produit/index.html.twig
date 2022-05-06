@@ -47,10 +47,10 @@
         {% endfor %}
        </tbody>
 {% else %}
-    <p>Il n'y a aucun Jeux disponible.</p>
+        <p>{{ 'produit.NoProduct'|trans }}</p>
 {% endif %}
  </table>
 {% else %}
-    <p>Merci de vous connecter pour accéder à cet espace !</p>
+        <p>{{ 'app.PleaseConnect'|trans }}</p>
 {% endif %}
 {% endblock %}

@@ -16,6 +16,7 @@ accueil:
   enTantQue: You are logged in as
   Jeux: Games
   Compte: Account
+  Stat: Statistical
 
 produit:
   nom: Name
@@ -31,6 +32,8 @@ produit:
   addPanier : Add to shopping basket
   titleProduit: Our games available!
   titleAddProduit: Add a new product
+  ModifJeux: Modify a game
+  NoProduct: No games available
 
 # Translation of pop-up
 
@@ -39,3 +42,16 @@ JeuxSup: Games Delete
 JeuxUpdate: Updated Games
 ImageNone: Picture not found
 JeuxAjout: Games added
+
+app:
+  PleaseConnect: Please connect to acces to this page !
+
+user:
+  titleStat: User registered today
+  nom: Name
+  prenom: Surname
+  email: E-mail
+  date: Date & Time
+  role: Role
+  NoUser: There is no user registered today !
+  descriptionStat: Users registered today from newest to oldest.
