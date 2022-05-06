@@ -10,6 +10,10 @@
                 <th>{{ 'compte.prenom'|trans }}</th>
                 <th>{{ 'compte.email'|trans }}</th>
                 <th>{{ 'compte.dtCreation'|trans }}</th>
+                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
+                {% else %}
+                <th>{{ 'compte.titleModifyAccount'|trans }}</th>
+                {% endif %}
             </tr>
        </thead>
        <tbody>
@@ -18,6 +22,12 @@
             <td>{{ app.user.prenom }}</td>
             <td>{{ app.user.email }}</td>
             <td>{{ app.user.date|date('d/m/Y H:i:s') }}</td>
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
+            {% else %}
+            <td>
+                <a class="btn btn-success" href="{{ path('app_edit_profil', {'id' : app.user.id }) }}">{{ 'compte.titleModifyAccount'|trans }}</a>
+            </td>
+            {% endif %}
         </tr>
     </tbody>
  </table>
@@ -51,11 +61,6 @@
         <p>{{ 'Panier.NoCommande'|trans }}</p>
 {% endif %}
  </table>
-
-<div style="text-align:center; margin-right:250px; margin-left:250px">
-    <h1>{{ 'compte.titleModifyAccount'|trans }}</h1>
-    <a class="btn btn-success" href="{{ path('app_edit_profil', {'id' : app.user.id }) }}">{{ 'compte.titleModifyAccount'|trans }}</a>
-</div>
 {% endif %}
 
  <hr>
