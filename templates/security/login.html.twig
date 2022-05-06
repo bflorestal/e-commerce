@@ -12,7 +12,7 @@
         <hr>
     {% if app.user %}
         <div class="mb-3">
-            {{ 'accueil.enTantQue'|trans }} {{ app.user.userIdentifier }}. <br>
+            <p>{{ 'accueil.enTantQue'|trans }} {{ app.user.userIdentifier }}. </p><br>
             <a style="color:white" href="{{ path('app_logout') }}">{{ 'accueil.Deconnexion'|trans }} <i class="fas fa-sign-out-alt"></i></a>
         </div>
     {% endif %}
