@@ -33,27 +33,27 @@
                 {% if app.user %}
                 {% if is_granted('ROLE_SUPER_ADMIN') %}
                     <li class="nav-item active">
-                        <i class="fas fa-smile"></i><a class="nav-link" href="{{ path('app_stat')}}"><h4>{{ 'accueil.Stat'|trans }}</h4></a>
+                        <i class="fas fa-info-circle fa-3x"></i><a class="nav-link" href="{{ path('app_stat')}}"><h4>{{ 'accueil.Stat'|trans }}</h4></a>
                     </li>
                 {% endif %}
                     <li class="nav-item active">
-                        <i class="fas fa-gamepad"></i><a class="nav-link" href="{{ path('app_produit')}}"><h4>{{ 'accueil.Jeux'|trans }}</h4></a>
+                        <i class="fas fa-gamepad fa-3x"></i><a class="nav-link" href="{{ path('app_produit')}}"><h4>{{ 'accueil.Jeux'|trans }}</h4></a>
                     </li>
                     <li class="nav-item active">
-                        <i class="fas fa-user-circle"></i><a class="nav-link" href="{{ path('app_compte', {'id' : app.user.id }) }}"><h4>{{ 'accueil.Compte'|trans }}</h4></a>
+                        <i class="fas fa-user-circle fa-3x"></i><a class="nav-link" href="{{ path('app_compte', {'id' : app.user.id }) }}"><h4>{{ 'accueil.Compte'|trans }}</h4></a>
                     </li>
                     <li class="nav-item active">
-                        <i class="fas fa-shopping-basket"></i><a class="nav-link" href="{{ path('app_panier')}}"><h4>{{ 'accueil.Panier'|trans }}</h4></a>
+                        <i class="fas fa-shopping-basket fa-3x"></i><a class="nav-link" href="{{ path('app_panier')}}"><h4>{{ 'accueil.Panier'|trans }}</h4></a>
                     </li>
                     <li class="nav-item active">
-                        <i class="fas fa-sign-out-alt"></i><a class="nav-link" href="{{ path('app_logout')}}"><h4>{{ 'accueil.Deconnexion'|trans }}</h4></a>
+                        <i class="fas fa-sign-out-alt fa-3x"></i><a class="nav-link" href="{{ path('app_logout')}}"><h4>{{ 'accueil.Deconnexion'|trans }}</h4></a>
                     </li>
                 {% else %}
                     <li class="nav-item active">
-                        <i class="fas fa-user"></i><a class="nav-link" href="{{ path('app_login')}}"><h4>{{ 'accueil.Connexion'|trans }}</h4></a>
+                        <i class="fas fa-user fa-3x"></i><a class="nav-link" href="{{ path('app_login')}}"><h4>{{ 'accueil.Connexion'|trans }}</h4></a>
                     </li>
                     <li class="nav-item">
-                        <i class="fas fa-user-edit"></i><a class="nav-link" href="{{ path('app_register')}}"><h4>{{ 'accueil.Inscription'|trans }}</h4></a>
+                        <i class="fas fa-user-edit fa-3x"></i><a class="nav-link" href="{{ path('app_register')}}"><h4>{{ 'accueil.Inscription'|trans }}</h4></a>
                     </li>
                 {% endif %}
             </ul>
