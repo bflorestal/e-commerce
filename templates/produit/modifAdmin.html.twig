@@ -2,7 +2,7 @@
 
 {% block body %}
 
-{% if is_granted('ROLE_ADMIN') %}
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
     <h1>{{ 'produit.ModifJeux'|trans }}</h1>
     {{ form(editProduit) }}
 {% endif %}

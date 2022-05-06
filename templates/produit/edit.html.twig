@@ -11,7 +11,7 @@
                 <th>{{ 'produit.prix'|trans }}</th>
                 <th>{{ 'produit.dispo'|trans }}</th>
                 <th>{{ 'produit.photo'|trans }}</th>
-                {% if is_granted('ROLE_ADMIN') %}
+                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
                 {% else %}
                 <th>{{ 'produit.ajouter'|trans }}</th>
                 {% endif %}
@@ -28,7 +28,7 @@
                 <img src="{{ asset('uploads/' ~ produit.photo ) }}" style="width: 200px;" alt="">
              {% endif %}
              </td>
-             {% if is_granted('ROLE_ADMIN') %}
+             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
              {% else %}
              <td>
                  <a class="btn btn-success" href="{{ path('app_panier', {'id' : produit.id }) }}">{{ 'produit.addPanier'|trans }}</a>
