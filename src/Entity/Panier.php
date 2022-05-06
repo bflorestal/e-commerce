@@ -19,6 +19,10 @@ class Panier
     #[ORM\Column(type: 'string', length: 255)]
     private $etat;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'panier')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +48,18 @@ class Panier
     public function setEtat(string $etat): self
     {
         $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

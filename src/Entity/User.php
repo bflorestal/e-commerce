@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,6 +33,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 255)]
     private $prenom;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Panier::class, orphanRemoval: true)]
+    private $panier;
+
+    #[ORM\Column(type: 'datetime')]
+    private $date;
+
+    public function __construct()
+    {
+        $this->panier = new ArrayCollection();
+        $this->date = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -122,6 +136,48 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Panier>
+     */
+    public function getPanier(): Collection
+    {
+        return $this->panier;
+    }
+
+    public function addPanier(Panier $panier): self
+    {
+        if (!$this->panier->contains($panier)) {
+            $this->panier[] = $panier;
+            $panier->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanier(Panier $panier): self
+    {
+        if ($this->panier->removeElement($panier)) {
+            // set the owning side to null (unless already changed)
+            if ($panier->getUser() === $this) {
+                $panier->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
