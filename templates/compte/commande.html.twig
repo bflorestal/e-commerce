@@ -5,7 +5,7 @@
 <h1>{{ 'compte.Wel'|trans }} {{ app.user.nom }} {{ app.user.prenom }}</h1>
      {% for commande in commandes %}
         <h3 style="color:white">{{ 'Commande.CommandeNumber'|trans }} : {{ commande.id }}</h3>
-        <h3 style="color:white">{{ 'Commande.DateCommande'|trans }} : {{ commande.date|date('Y-m-d') }}</h3>
+        <p style="color:white">{{ 'Commande.DateCommande'|trans }} : {{ commande.date|date('Y-m-d') }}</p>
     {% endfor %}
     <table class="table" border="1">
         <thead>
@@ -15,16 +15,16 @@
             </tr>
        </thead>
     <tbody>
-     {% for commande in commandes %}
+     {% for article in articles %}
         <tr>
-            <td>{{ commande.produit }}</td>
-            <td>{{ commande.quantite }}</td>
+            <td>{{ article.produit }}</td>
+            <td>{{ article.quantite }}</td>
         </tr>
         {% endfor %}
     </tbody>
  </table>
     {% for commande in commandes %}
-        <h3 style="color:white">{{ 'Commande.TotalCommande'|trans }} : {{ commande.montant }} €</h3>
+        <h4 style="color:white">{{ 'Commande.TotalCommande'|trans }} : {{ commande.montant }} €</h4>
     {% endfor %}
  <hr>
 

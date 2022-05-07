@@ -39,9 +39,13 @@ class Produit
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Panier::class)]
     private $Produit;
 
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Contenupanier::class, orphanRemoval: true)]
+    private $Produits;
+
     public function __construct()
     {
         $this->Produit = new ArrayCollection();
+        $this->Produits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -142,5 +146,13 @@ class Produit
     // Retourne le nom du produit et la description
     public function __toString(){
         return $this->nom." : ".$this->description;
+    }
+
+    /**
+     * @return Collection<int, Contenupanier>
+     */
+    public function getProduits(): Collection
+    {
+        return $this->Produits;
     }
 }

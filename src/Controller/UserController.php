@@ -10,6 +10,7 @@ use App\Form\UserType;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Entity\Panier;
+use App\Entity\ContenuPanier;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -64,9 +65,11 @@ class UserController extends AbstractController
         // Récupération des commandes liés à l'utilisateurs
         $ems = $doctrine->getManager();
         $commandes = $ems->getRepository(Panier::class)->findOrderById($idCommande);
+        $articles = $ems->getRepository(ContenuPanier::class)->findDetailById("1");
 
         return $this->render('compte/commande.html.twig', [
             'commandes' => $commandes,
+            'articles' => $articles,
             ]);
     }
 

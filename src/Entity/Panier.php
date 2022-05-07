@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PanierRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PanierRepository::class)]
@@ -33,9 +35,13 @@ class Panier
     #[ORM\JoinColumn(nullable: false)]
     private $produit;
 
+    #[ORM\OneToMany(mappedBy: 'panier', targetEntity: Contenupanier::class, orphanRemoval: true)]
+    private $Contenupaniers;
+
     public function __construct()
     {
         $this->etat = false;
+        $this->Contenupaniers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -111,6 +117,36 @@ class Panier
     public function setProduit(?produit $produit): self
     {
         $this->produit = $produit;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contenupanier>
+     */
+    public function getContenupaniers(): Collection
+    {
+        return $this->Contenupaniers;
+    }
+
+    public function addContenupanier(Contenupanier $contenupanier): self
+    {
+        if (!$this->Contenupaniers->contains($contenupanier)) {
+            $this->Contenupaniers[] = $contenupanier;
+            $contenupanier->setPanier($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContenupanier(Contenupanier $contenupanier): self
+    {
+        if ($this->Contenupaniers->removeElement($contenupanier)) {
+            // set the owning side to null (unless already changed)
+            if ($contenupanier->getPanier() === $this) {
+                $contenupanier->setPanier(null);
+            }
+        }
 
         return $this;
     }

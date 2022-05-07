@@ -71,4 +71,14 @@ class ContenuPanierRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findDetailById($commandes = "2")
+    {
+        return $this->createQueryBuilder('c')
+        ->andWhere('c.panier = :panier')
+        ->setParameter('panier', $commandes)
+        ->getQuery()
+        ->getResult()
+        ;
+    }
 }
