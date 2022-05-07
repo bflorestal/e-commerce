@@ -1,24 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panier{% endblock %}
-
 {% block body %}
-<section class="d-flex flex-column">
-    <h1>Panier</h1>
-    <!-- boucle for -->
-        <article class="d-flex flex-row">
-            <div>
-                <img src="" alt="Test" />
-            </div>
-            <div>
-                <!-- nom du produit, quantité commandée, prix du produit, montant de la ligne, bouton suppression du produit -->
-                <span></span>
-                <span></span>
-            </div>
-        </article>
-    <!-- endfor -->
-    <div>
-        <p>Total : -</p>
-    </div>
-</section>
+{% if app.user is not null %}
+<h1>{{ 'Panier.Wel'|trans }}</h1>
+     {% for panier in paniers %}
+        <h3 style="color:white">{{ 'Commande.CommandeNumber'|trans }} : {{ panier.id }}</h3>
+        <p style="color:white">{{ 'Commande.DateCommande'|trans }} : {{ panier.date|date('Y-m-d') }}</p>
+    {% endfor %}
+    <table class="table" border="1">
+        <thead>
+            <tr>
+                <th>{{ 'Commande.NomProduit'|trans }}</th>
+                <th>{{ 'Commande.QuantiteCommande'|trans }}</th>
+            </tr>
+       </thead>
+    <tbody>
+     {% for panier in paniers %}
+        <tr>
+            <td>{{ panier.produit }}</td>
+            <td>{{ panier.quantite }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+ </table>
+    {% for panier in paniers %}
+    <hr>
+    <a class="btn btn-success" href="{{ path('app_valid_panier') }}">{{ 'Panier.valid'|trans }}</a>
+    {% endfor %}
+ <hr>
+
+{% else %}
+        <p>{{ 'app.PleaseConnect'|trans }}</p>
+{% endif %}
 {% endblock %}

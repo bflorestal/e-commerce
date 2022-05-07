@@ -31,7 +31,7 @@
              {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
              {% else %}
                 <td>
-                    <a class="btn btn-success" href="{{ path('app_panier_add', {'id' : produit.id }) }}">{{ 'produit.addPanier'|trans }}</a>
+                    <a class="btn btn-success" href="{{ path('app_panier', {'id' : app.user.id }) }}">{{ 'produit.addPanier'|trans }}</a>
                 </td>
              {% endif %}
         </tr>

@@ -4,23 +4,27 @@ namespace App\Controller;
 
 use App\Entity\Panier;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use App\Entity\ContenuPanier;
 
 class PanierController extends AbstractController
 {
 
-    #[Route('/panier', name: 'app_panier')]
-    public function index(EntityManagerInterface $em): Response
+    #[Route('/panier/{id}', name: 'app_panier')]
+    public function index(Request $request, ManagerRegistry $doctrine, EntityManagerInterface $em): Response
     {
-        // Récupération de la table Panier
-        $paniers = $em->getRepository(Panier::class)->findAll();
+        $iduser = $request->attributes->get('_route_params');
+        $em = $doctrine->getManager();
+        $commandes = $em->getRepository(Panier::class)->findOrderByIdNull($iduser);
+        $articles = $em->getRepository(ContenuPanier::class)->findDetailById($commandes);
 
         return $this->render('panier/index.html.twig', [
-            'paniers' => $paniers,
+            'paniers' => $articles,
         ]);
     }
 
@@ -29,12 +33,26 @@ class PanierController extends AbstractController
     {
         $params = $request->attributes->get('_route_params');
 
-        // Récupération de la table Panier
-        //$paniers = $em->getRepository(Panier::class)->findAll();
+        // Connexion à la base de données
+        $em = $doctrine->getManager();
+        $panier = new Panier();
+        
+        $form = $this->createForm(PanierType::class, $panier);
+        $form->handleRequest($request);
+
+        $iduser = $request->attributes->get('_route_params');
+        $em = $doctrine->getManager();
+        $commandes = $em->getRepository(Panier::class)->findOrderByIdNull($iduser);
+        $articles = $em->getRepository(ContenuPanier::class)->findDetailById($commandes);
 
         return $this->render('panier/index.html.twig', [
-            'params' => $params,
+            'paniers' => $articles,
         ]);
     }
-    
+     
+    #[Route('/panierValid', name: 'app_valid_panier')]
+    public function Valid(Request $request, ManagerRegistry $doctrine, EntityManagerInterface $em): Response
+    {
+        return $this->render('compte/index.html.twig', []);
+    }
 }

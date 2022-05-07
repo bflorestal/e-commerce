@@ -95,4 +95,16 @@ class PanierRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findOrderByIdNull($idUser)
+    {
+        return $this->createQueryBuilder('p')
+        ->andWhere('p.etat LIKE :statut')
+        ->setParameter('statut', "0")
+        ->andWhere('p.user = :user')
+        ->setParameter('user', $idUser)
+        ->orderBy('p.date', 'DESC')
+        ->getQuery()
+        ->getResult()
+        ;
+    }
 }
