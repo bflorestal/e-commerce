@@ -39,7 +39,7 @@ class Produit
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Panier::class)]
     private $Produit;
 
-    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Contenupanier::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: ContenuPanier::class, orphanRemoval: true)]
     private $Produits;
 
     public function __construct()
@@ -149,7 +149,7 @@ class Produit
     }
 
     /**
-     * @return Collection<int, Contenupanier>
+     * @return Collection<int, ContenuPanier>
      */
     public function getProduits(): Collection
     {

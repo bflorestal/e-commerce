@@ -35,13 +35,13 @@ class Panier
     #[ORM\JoinColumn(nullable: false)]
     private $produit;
 
-    #[ORM\OneToMany(mappedBy: 'panier', targetEntity: Contenupanier::class, orphanRemoval: true)]
-    private $Contenupaniers;
+    #[ORM\OneToMany(mappedBy: 'panier', targetEntity: ContenuPanier::class, orphanRemoval: true)]
+    private $ContenuPanier;
 
     public function __construct()
     {
         $this->etat = false;
-        $this->Contenupaniers = new ArrayCollection();
+        $this->ContenuPanier = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -122,26 +122,26 @@ class Panier
     }
 
     /**
-     * @return Collection<int, Contenupanier>
+     * @return Collection<int, ContenuPanier>
      */
-    public function getContenupaniers(): Collection
+    public function getContenuPanier(): Collection
     {
-        return $this->Contenupaniers;
+        return $this->ContenuPanier;
     }
 
-    public function addContenupanier(Contenupanier $contenupanier): self
+    public function addContenuPanier(ContenuPanier $contenupanier): self
     {
-        if (!$this->Contenupaniers->contains($contenupanier)) {
-            $this->Contenupaniers[] = $contenupanier;
+        if (!$this->ContenuPanier->contains($contenupanier)) {
+            $this->ContenuPanier[] = $contenupanier;
             $contenupanier->setPanier($this);
         }
 
         return $this;
     }
 
-    public function removeContenupanier(Contenupanier $contenupanier): self
+    public function removeContenuPanier(ContenuPanier $contenupanier): self
     {
-        if ($this->Contenupaniers->removeElement($contenupanier)) {
+        if ($this->ContenuPanier->removeElement($contenupanier)) {
             // set the owning side to null (unless already changed)
             if ($contenupanier->getPanier() === $this) {
                 $contenupanier->setPanier(null);

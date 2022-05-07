@@ -19,7 +19,7 @@ class ContenuPanier
     #[ORM\Column(type: 'datetime')]
     private $date;
 
-    #[ORM\ManyToOne(targetEntity: panier::class, inversedBy: 'Contenupaniers')]
+    #[ORM\ManyToOne(targetEntity: panier::class, inversedBy: 'ContenuPanier')]
     #[ORM\JoinColumn(nullable: false)]
     private $panier;
 
