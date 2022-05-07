@@ -4,7 +4,7 @@ body {
 label,
 h1,
 p,
-td {
+td, th {
   color: white;
 }
 .png {
@@ -19,3 +19,4 @@ textarea {
   width: 550px;
   height: 200px;
 }
+
