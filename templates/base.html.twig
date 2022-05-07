@@ -42,9 +42,11 @@
                     <li class="nav-item active">
                         <i class="fas fa-user-circle fa-3x"></i><a class="nav-link" href="{{ path('app_compte', {'id' : app.user.id }) }}"><h4>{{ 'accueil.Compte'|trans }}</h4></a>
                     </li>
+                    {% if is_granted('ROLE_USER') != is_granted('ROLE_ADMIN') != is_granted('ROLE_SUPER_ADMIN') %}
                     <li class="nav-item active">
                         <i class="fas fa-shopping-basket fa-3x"></i><a class="nav-link" href="{{ path('app_panier', {'id' : app.user.id }) }}"><h4>{{ 'accueil.Panier'|trans }}</h4></a>
                     </li>
+                    {% endif %}
                     <li class="nav-item active">
                         <i class="fas fa-sign-out-alt fa-3x"></i><a class="nav-link" href="{{ path('app_logout')}}"><h4>{{ 'accueil.Deconnexion'|trans }}</h4></a>
                     </li>
