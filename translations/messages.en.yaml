@@ -35,6 +35,7 @@ produit:
   titleAddProduit: Add a new product
   ModifJeux: Modify a game
   NoProduct: No games available
+  qte: Quantity
 
 # Translation of pop-up
 

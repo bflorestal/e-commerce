@@ -12,10 +12,9 @@
                 <th>{{ 'produit.prix'|trans }}</th>
                 <th>{{ 'produit.dispo'|trans }}</th>
                 <th>{{ 'produit.photo'|trans }}</th>
-                <th>Quantity</th>
                 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
                 {% else %}
-                <th>{{ 'produit.ajouter'|trans }}</th>
+                    <th>{{ 'produit.ajouter'|trans }}</th>
                 {% endif %}
             </tr>
         </thead>
@@ -31,20 +30,9 @@
             </td>
              {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
              {% else %}
-             <td>
-             {% if produit.stock > 0 %}
-             <select>
-                {% for i in 1..produit.stock %}
-                    <option value={{i}}>{{i}}</option>
-                {% endfor %}
-             </select>
-             </td>
                 <td>
-                    <a class="btn btn-success" href="{{ path('app_panier', {'id' : produit.id }) }}">{{ 'produit.addPanier'|trans }}</a>
+                    <a class="btn btn-success" href="{{ path('app_panier_add', {'id' : produit.id }) }}">{{ 'produit.addPanier'|trans }}</a>
                 </td>
-             {% else %}
-             <p>Sold Out</p>
-             {% endif %}
              {% endif %}
         </tr>
        </tbody>

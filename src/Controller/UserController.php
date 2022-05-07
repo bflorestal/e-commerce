@@ -55,7 +55,7 @@ class UserController extends AbstractController
      ]);
     }
 
-    // Permet l'ouverture de la vue compte/index.html.twig
+    // Permet l'ouverture de la vue compte/commande.html.twig
     #[Route('/detail_commande/{id}', name: 'app_details_commande')]
     public function detail(Panier $user = null, Request $request, ManagerRegistry $doctrine)
     {
@@ -65,7 +65,7 @@ class UserController extends AbstractController
         // Récupération des commandes liés à l'utilisateurs
         $ems = $doctrine->getManager();
         $commandes = $ems->getRepository(Panier::class)->findOrderById($idCommande);
-        $articles = $ems->getRepository(ContenuPanier::class)->findDetailById("1");
+        $articles = $ems->getRepository(ContenuPanier::class)->findDetailById($commandes);
 
         return $this->render('compte/commande.html.twig', [
             'commandes' => $commandes,
