@@ -23,12 +23,17 @@ class UserController extends AbstractController
         // récupération de l'id en paramètre de la route
         $idUser = $request->attributes->get('_route_params');
 
+        $idEtat = $request->attributes->get('_route_params');
+
         // Récupération des commandes liés à l'utilisateurs
         $ems = $doctrine->getManager();
         $usersCommande = $ems->getRepository(Panier::class)->findOrderByUser($idUser);
 
+        $notPaid = $ems ->getRepository(Panier::class)-> notPaidOrder($idEtat);
+
         return $this->render('compte/index.html.twig', [
             'paniers' => $usersCommande,
+            'notPaid' => $notPaid,
          ]);
     }
 

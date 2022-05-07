@@ -85,6 +85,14 @@ class PanierRepository extends ServiceEntityRepository
         ;
     }
 
+    public function notPaidOrder($idEtat){
+        return $this->createQueryBuilder('p')
+        ->andWhere('p.etat = 0')
+        ->getQuery()
+        ->getResult()
+        ;
+    }
+
     public function findOrderById($idCommande)
     {
         return $this->createQueryBuilder('p')
