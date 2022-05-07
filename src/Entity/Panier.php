@@ -29,7 +29,7 @@ class Panier
     #[ORM\Column(type: 'integer')]
     private $quantite;
 
-    #[ORM\ManyToOne(targetEntity: produit::class, inversedBy: 'Produit')]
+    #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'Produit')]
     #[ORM\JoinColumn(nullable: false)]
     private $produit;
 
