@@ -35,7 +35,7 @@ class Panier
     #[ORM\JoinColumn(nullable: false)]
     private $produit;
 
-    #[ORM\OneToMany(mappedBy: 'panier', targetEntity: Contenupanier::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'panier', targetEntity: ContenuPanier::class, orphanRemoval: true)]
     private $Contenupaniers;
 
     public function __construct()
@@ -129,7 +129,7 @@ class Panier
         return $this->Contenupaniers;
     }
 
-    public function addContenupanier(Contenupanier $contenupanier): self
+    public function addContenupanier(ContenuPanier $contenupanier): self
     {
         if (!$this->Contenupaniers->contains($contenupanier)) {
             $this->Contenupaniers[] = $contenupanier;
@@ -139,7 +139,7 @@ class Panier
         return $this;
     }
 
-    public function removeContenupanier(Contenupanier $contenupanier): self
+    public function removeContenupanier(ContenuPanier $contenupanier): self
     {
         if ($this->Contenupaniers->removeElement($contenupanier)) {
             // set the owning side to null (unless already changed)
