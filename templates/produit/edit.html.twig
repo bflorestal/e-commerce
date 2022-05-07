@@ -2,6 +2,7 @@
 
 {% block body %}
 {% if app.user is not null %}
+<a class="btn btn-success" href="{{ path('app_produit')}}">◀</a>
 <div style="text-align:center">
     <table class="table" border="1">
         <thead>
@@ -11,28 +12,39 @@
                 <th>{{ 'produit.prix'|trans }}</th>
                 <th>{{ 'produit.dispo'|trans }}</th>
                 <th>{{ 'produit.photo'|trans }}</th>
+                <th>Quantity</th>
                 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
                 {% else %}
                 <th>{{ 'produit.ajouter'|trans }}</th>
                 {% endif %}
             </tr>
-       </thead>
+        </thead>
         <tbody>
         <tr>
             <td>{{ produit.nom }}</td>
             <td>{{ produit.description }}</td>
             <td>{{ produit.prix }} €</td>
             <td>{{ produit.stock }}</td>
-
-             <td>{% if produit.photo is not null %}
+            <td>{% if produit.photo is not null %}
                 <img src="{{ asset('uploads/' ~ produit.photo ) }}" style="width: 200px;" alt="">
              {% endif %}
-             </td>
+            </td>
              {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
              {% else %}
              <td>
-                 <a class="btn btn-success" href="{{ path('app_panier', {'id' : produit.id }) }}">{{ 'produit.addPanier'|trans }}</a>
+             {% if produit.stock > 0 %}
+             <select>
+                {% for i in 1..produit.stock %}
+                    <option value={{i}}>{{i}}</option>
+                {% endfor %}
+             </select>
              </td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('app_panier', {'id' : produit.id }) }}">{{ 'produit.addPanier'|trans }}</a>
+                </td>
+             {% else %}
+             <p>Sold Out</p>
+             {% endif %}
              {% endif %}
         </tr>
        </tbody>
