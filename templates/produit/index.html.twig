@@ -30,6 +30,8 @@
             <td>{{ prod.description }}</td>
              <td>{% if prod.photo is not null %}
                 <img src="{{ asset('uploads/' ~ prod.photo ) }}" style="width: 200px;" alt="">
+                {% else %}
+                <img src="https://rootcms.elocms.com/assets/images/www.cvm-france.fr/imageUser/none.jpg" style="width: 200px;" alt="">
              {% endif %}
              </td>
             <td>
