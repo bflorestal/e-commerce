@@ -4,7 +4,7 @@ body {
 label,
 h1,
 p,
-td, th {
+td, th, h3{
   color: white;
 }
 .png {

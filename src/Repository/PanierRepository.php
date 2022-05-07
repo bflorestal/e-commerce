@@ -71,6 +71,7 @@ class PanierRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
     public function findOrderByUser($idUser)
     {
         return $this->createQueryBuilder('p')
@@ -83,4 +84,15 @@ class PanierRepository extends ServiceEntityRepository
         ->getResult()
         ;
     }
+
+    public function findOrderById($idCommande)
+    {
+        return $this->createQueryBuilder('p')
+        ->andWhere('p.id = :id')
+        ->setParameter('id', $idCommande)
+        ->getQuery()
+        ->getResult()
+        ;
+    }
+    
 }

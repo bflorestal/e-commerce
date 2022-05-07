@@ -53,6 +53,23 @@ class UserController extends AbstractController
         'modifProfil' => $form->createView(),
      ]);
     }
+
+    // Permet l'ouverture de la vue compte/index.html.twig
+    #[Route('/detail_commande/{id}', name: 'app_details_commande')]
+    public function detail(Panier $user = null, Request $request, ManagerRegistry $doctrine)
+    {
+        // récupération de l'id en paramètre de la route
+        $idCommande = $request->attributes->get('_route_params');
+
+        // Récupération des commandes liés à l'utilisateurs
+        $ems = $doctrine->getManager();
+        $commandes = $ems->getRepository(Panier::class)->findOrderById($idCommande);
+
+        return $this->render('compte/commande.html.twig', [
+            'commandes' => $commandes,
+            ]);
+    }
+
 }
 
 

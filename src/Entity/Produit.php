@@ -138,4 +138,9 @@ class Produit
 
         return $this;
     }
+
+    // Retourne le nom du produit et la description
+    public function __toString(){
+        return $this->nom." : ".$this->description;
+    }
 }
