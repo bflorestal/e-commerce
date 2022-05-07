@@ -25,7 +25,7 @@
             <td>{{ produit.prix }} €</td>
             <td>{{ produit.stock }}</td>
             <td>{% if produit.photo is not null %}
-                <img src="{{ asset('uploads/' ~ produit.photo ) }}" style="width: 200px;" alt="">
+                <img src="{{ asset('uploads/' ~ produit.photo ) }}" onerror="this.src='https://rootcms.elocms.com/assets/images/www.cvm-france.fr/imageUser/none.jpg'" style="width: 200px;" alt="">
                 {% else %}
                 <img src="https://rootcms.elocms.com/assets/images/www.cvm-france.fr/imageUser/none.jpg" style="width: 200px;" alt="">
              {% endif %}
