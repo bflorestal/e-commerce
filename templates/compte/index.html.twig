@@ -18,7 +18,7 @@
        </thead>
        <tbody>
         <tr>
-            <td>{{ app.user.nom }}</td>
+            <td>{{ app.user.nom }}</td> 
             <td>{{ app.user.prenom }}</td>
             <td>{{ app.user.email }}</td>
             <td>{{ app.user.date|date('d/m/Y H:i:s') }}</td>
@@ -36,6 +36,7 @@
 
 
  {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
+ 
  {% else %}
 
 <h1>{{ 'Panier.Commandes'|trans }}</h1>
