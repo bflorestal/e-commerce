@@ -75,7 +75,7 @@
     <a class="btn btn-success" href="{{ path('produit_add_admin') }}">{{ 'add'|trans }}</a>
  {% endif %}
  {% if is_granted('ROLE_SUPER_ADMIN')%}
-<h2>Unpaid Order</h2>
+<h1>{{ 'compte.NonPayer'|trans }}</h1>
     <table class="table" border="1">
         <thead>
             <tr>

@@ -70,6 +70,7 @@ compte:
   AdminPartOne: Administrative management
   GestionProduit: Manage products
   titleModifyAccount: Modify my account
+  NonPayer: Unpaid Order
 
 Panier:
   Commandes: Ordered
