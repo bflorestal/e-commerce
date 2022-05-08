@@ -26,6 +26,7 @@ class Panier
     private $etat;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'panier')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")] 
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
@@ -38,6 +39,7 @@ class Panier
     private $quantite;
 
     #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'Produit')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")] 
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotBlank]
     private $produit;

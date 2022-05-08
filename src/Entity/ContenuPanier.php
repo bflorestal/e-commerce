@@ -25,11 +25,13 @@ class ContenuPanier
     private $date;
 
     #[ORM\ManyToOne(targetEntity: Panier::class, inversedBy: 'ContenuPanier')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")] 
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotBlank]
     private $panier;
 
     #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'Produits')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")] 
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotBlank]
     private $produit;

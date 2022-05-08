@@ -12,6 +12,7 @@
         <thead>
             <tr>
                 <th>{{ 'Commande.NomProduit'|trans }}</th>
+                <th>Montant</th>
                 <th>{{ 'Commande.QuantiteCommande'|trans }}</th>
             </tr>
        </thead>
@@ -20,13 +21,14 @@
      {% for article in articles %}
         <tr>
             <td>{{ article.produit }}</td>
+            <td>{{ article.panier.montant}}</td>
             <td>{{ article.quantite }}</td>
         </tr>
         {% endfor %}
     </tbody>
  </table>
     {% for commande in commandes %}
-        <h4 style="color:white">{{ 'Commande.TotalCommande'|trans }} : {{ commande.montant }} €</h4>
+        <h4 style="color:white">{{ 'Commande.TotalCommande'|trans }} : {{ commande.montant * commande.quantite }} €</h4>
     {% endfor %}
  <hr>
 
