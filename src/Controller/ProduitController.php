@@ -122,37 +122,6 @@ class ProduitController extends AbstractController
         // Récupère l'utilisateur et le stocke dans une variable 
         $user = $this->getUser();
 
-        /*
-        $form = $this->createForm(ProduitType::class, $produit);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-
-            $photo = $form->get('photo')->getData();
-
-            if ($photo) {
-                $newFilename = uniqid().'.'.$photo->guessExtension();
-
-                try {
-                    $photo->move(
-                        $this->getParameter('upload_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    $this->addFlash('danger', $translator->trans('ImageNone'));
-                    return $this->redirectToRoute('app_produit');
-                }
-
-                $produit->setPhoto($newFilename);
-            }
-            
-            $em = $doctrine->getManager();
-            $em->persist($produit);
-            $em->flush();
-            $this->addFlash('success', $translator->trans('JeuxUpdate'));
-        }
-        */
-
         // Création d'un objet vide pour le formulaire
         $contenuPanier = new ContenuPanier();
         // Formulaire d'ajout du produit au panier
@@ -167,14 +136,13 @@ class ProduitController extends AbstractController
             // Récupère l'ID du panier de l'utilisateur
             $contenuPanier->setPanier($user->getPanier());
 
-            $this->addFlash('success', '(test) form bien envoyé');
+            $this->addFlash('success', $translator->trans('produit.ajouteAuPanier'));
             return $this->redirectToRoute('app_panier', ['id' => $request->get('id')]);
         }
 
      return $this->render('produit/edit.html.twig', [
         'produit' => $produit,
-        'ajoutPanier' => $ajout->createView(),
-        // 'editProduit' => $form->createView()
+        'ajoutPanier' => $ajout->createView()
      ]);
     }
 
