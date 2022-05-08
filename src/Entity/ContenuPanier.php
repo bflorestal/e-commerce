@@ -26,10 +26,12 @@ class ContenuPanier
 
     #[ORM\ManyToOne(targetEntity: Panier::class, inversedBy: 'ContenuPanier')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
     private $panier;
 
     #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'Produits')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
     private $produit;
 
     public function __construct()

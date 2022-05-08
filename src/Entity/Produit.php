@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 #[UniqueEntity('nom')]
 class Produit
@@ -18,6 +20,7 @@ class Produit
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
     private $nom;
 
     #[ORM\Column(type: 'text', nullable: true)]
@@ -34,12 +37,15 @@ class Produit
     private $stock;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\NotBlank]
     private $photo;
 
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Panier::class)]
+    #[Assert\NotBlank]
     private $Produit;
 
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: ContenuPanier::class, orphanRemoval: true)]
+    #[Assert\NotBlank]
     private $Produits;
 
     public function __construct()

@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: PanierRepository::class)]
 class Panier
 {
@@ -16,9 +18,11 @@ class Panier
     private $id;
 
     #[ORM\Column(type: 'datetime')]
+    #[Assert\NotBlank]
     private $date;
 
     #[ORM\Column(type: 'boolean')]
+    #[Assert\NotBlank]
     private $etat;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'panier')]
@@ -26,16 +30,20 @@ class Panier
     private $user;
 
     #[ORM\Column(type: 'float')]
+    #[Assert\NotBlank]
     private $montant;
 
     #[ORM\Column(type: 'integer')]
+    #[Assert\NotBlank]
     private $quantite;
 
     #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'Produit')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
     private $produit;
 
     #[ORM\OneToMany(mappedBy: 'panier', targetEntity: ContenuPanier::class, orphanRemoval: true)]
+    #[Assert\NotBlank]
     private $ContenuPanier;
 
     public function __construct()
