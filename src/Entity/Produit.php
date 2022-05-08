@@ -37,7 +37,6 @@ class Produit
     private $stock;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Assert\NotBlank]
     private $photo;
 
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Panier::class)]
