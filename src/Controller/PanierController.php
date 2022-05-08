@@ -14,13 +14,17 @@ use App\Entity\ContenuPanier;
 
 class PanierController extends AbstractController
 {
-
+    // Affichage du panier de l'utilisateur connecté
     #[Route('/panier/{id}', name: 'app_panier')]
     public function index(Request $request, ManagerRegistry $doctrine, EntityManagerInterface $em): Response
     {
+        // Récupération des params dans l'url
         $iduser = $request->attributes->get('_route_params');
+        // Connexion bdd
         $em = $doctrine->getManager();
+        // Première requete on récupère le panier général
         $commandes = $em->getRepository(Panier::class)->findOrderByIdNull($iduser);
+        // Deuxième requete on recupère le detail du panier
         $articles = $em->getRepository(ContenuPanier::class)->findDetailById($commandes);
 
         return $this->render('panier/index.html.twig', [
