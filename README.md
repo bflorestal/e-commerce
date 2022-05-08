@@ -24,6 +24,11 @@ Votre projet est prêt, vous pouvez lancer `symfony serve`
 
 L'application web est en mode Prod. Cela permet l'utilisation des pages d'erreurs personnalisées.
 
+## Chnagement de la langue :
+Par default la langue est sur "fr", pour changer la langue vers "en", rendez-vous dans : 
+    - config/packages/translation.yaml
+    - default_locale: en
+    
 ## Page d'accueil :
 http://127.0.0.1:8000/
 
