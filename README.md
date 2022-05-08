@@ -22,6 +22,8 @@ Votre projet est prêt, vous pouvez lancer `symfony serve`
 
 # INFORMATIONS
 
+L'application web est en mode Prod. Cela permet l'utilisation des pages d'erreurs personnalisées.
+
 ## Page d'accueil :
 http://127.0.0.1:8000/
 
@@ -48,6 +50,8 @@ https://www.swisstransfer.com/d/64f419af-4b7c-43ed-8adc-fcc817538eae (expire le 
 
 Cette base intègre des donnés permettant de tester les fonctions autours du panier.
 L'ajout d'un article dans un panier et sa validation ne sont pas fonctionnels.
+
+Cepandant avec la base de test il est possible de tester les fonctionnalités sautour du panier.
 
 ***
 
@@ -80,5 +84,5 @@ L'ajout d'un article dans un panier et sa validation ne sont pas fonctionnels.
     - Si vous insérer aucune images, une image par default sera mise.
     - Lien vers des images : https://www.swisstransfer.com/d/52b26ddf-1600-4224-acf2-ee5250f31718 (expire le 07/06/2022 à 11:22)
 
-#### Password lol@lol.lol : LOL1272
-#### Password mimi@mimi.mimi : MIMI1272 
+#### Password USER : lol@lol.lol : LOL1272
+#### Password USER : mimi@mimi.mimi : MIMI1272 
