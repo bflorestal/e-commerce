@@ -79,3 +79,6 @@ L'ajout d'un article dans un panier et sa validation ne sont pas fonctionnels.
 # Product :
     - Si vous insérer aucune images, une image par default sera mise.
     - Lien vers des images : https://www.swisstransfer.com/d/52b26ddf-1600-4224-acf2-ee5250f31718 (expire le 07/06/2022 à 11:22)
+
+#### Password lol@lol.lol : LOL1272
+#### Password mimi@mimi.mimi : MIMI1272 
