@@ -1,0 +1,93 @@
+Nom: Nom
+Prenom: Prénom
+Email: E-mail
+Password: Mot de passe
+Sauvegarder: Sauvegarder
+Image (JPG, PNG): Image (JPG, PNG)
+Prix: Prix en €
+add: Ajouter un nouveau produit
+
+accueil:
+  Produit: Produit
+  Connexion: Connexion
+  Inscription: Inscription
+  Deconnexion: Déconnexion
+  Panier: Panier
+  enTantQue: Vous êtes connecté en tant que
+  Jeux: Jeux
+  Compte: Compte
+  Stat: Inscrit aujourd'hui
+  Wel: Bienvenue sur Micromania !
+
+produit:
+  nom: Nom
+  description: Description
+  dispo: Disponibilité
+  prix: Prix
+  photo: Photo
+  ajouter: Ajouter
+  sup: Supprimer
+  modif: Éditer
+  details: Détails
+  Panier: Panier
+  addPanier: Ajouter au panier
+  ajouteAuPanier: Ajouté au panier
+  titleProduit: Nos jeux disponibles !
+  titleAddProduit: Ajouter un nouveau produit
+  ModifJeux: Modifier un jeu
+  NoProduct: Pas de jeux disponibles
+  qte: Quantité
+
+# Translation of pop-up
+
+JeuxIntrouvable: Jeu introuvable
+JeuxSup: Jeu supprimé
+JeuxUpdate: Jeu mis à jour
+ImageNone: Image introuvable
+JeuxAjout: Jeu ajouté
+userIntrouvable: Utilisateur introuvable !
+CompteUpdate: Compte mis à jour !
+
+app:
+  PleaseConnect: Veuillez vous connecter pour accéder à cette page !
+
+user:
+  titleStat: Utilisateur inscrit aujourd'hui
+  nom: Nom
+  prenom: Prénom
+  email: E-mail
+  date: Date & Heure
+  role: Rôle
+  NoUser: Aucun utilisateur ne s'est inscrit aujourd'hui !
+  descriptionStat: Utilisateurs inscrits aujourd'hui du plus récent au plus ancien.
+
+compte:
+  Wel: Bienvenue
+  nom: Nom
+  prenom: Prénom
+  email: E-mail
+  dtCreation: Date de création
+  ContactUS: Si vous voulez supprimer votre compte, veuillez nous contacter.
+  AdminPartOne: Gestion administrative
+  GestionProduit: Gérer les produits
+  titleModifyAccount: Modifier mon compte
+  NonPayer: Commandes non payées
+
+Panier:
+  Commandes: Commandé
+  id: ID
+  montant: Prix
+  date: Date
+  NoCommande: Il n'y a aucune commande !
+  detail: Détails
+  description: Description
+  Wel: Mon panier
+  valid: Payer
+
+Commande:
+  NomProduit: Nom du produit
+  QuantiteCommande: Quantité
+  CommandeNumber: Numéro de commande
+  DateCommande: Date de la commande
+  TotalCommande: Total de la commande
+  Prix: Prix
