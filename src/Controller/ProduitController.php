@@ -11,6 +11,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Produit;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use App\Entity\ContenuPanier;
+use App\Form\ContenuPanierType;
 
 class ProduitController extends AbstractController
 {
@@ -117,6 +119,10 @@ class ProduitController extends AbstractController
             return $this->redirectToRoute('app_produit');
         }
 
+        // Récupère l'utilisateur et le stocke dans une variable 
+        $user = $this->getUser();
+
+        /*
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
@@ -145,10 +151,30 @@ class ProduitController extends AbstractController
             $em->flush();
             $this->addFlash('success', $translator->trans('JeuxUpdate'));
         }
+        */
+
+        // Création d'un objet vide pour le formulaire
+        $contenuPanier = new ContenuPanier();
+        // Formulaire d'ajout du produit au panier
+        $ajout = $this->createForm(ContenuPanierType::class, $contenuPanier);
+        $ajout->handleRequest($request);
+
+        // Si le formulaire est envoyé et valide
+        if ($ajout->isSubmitted() && $ajout->isValid()) {
+
+            // Récupère le produit
+            $contenuPanier->setProduit($produit);
+            // Récupère l'ID du panier de l'utilisateur
+            $contenuPanier->setPanier($user->getPanier());
+
+            $this->addFlash('success', '(test) form bien envoyé');
+            return $this->redirectToRoute('app_panier', ['id' => $request->get('id')]);
+        }
 
      return $this->render('produit/edit.html.twig', [
         'produit' => $produit,
-        'editProduit' => $form->createView()
+        'ajoutPanier' => $ajout->createView(),
+        // 'editProduit' => $form->createView()
      ]);
     }
 

@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ContenuPanierRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: ContenuPanierRepository::class)]
 class ContenuPanier
 {
@@ -14,9 +16,12 @@ class ContenuPanier
     private $id;
 
     #[ORM\Column(type: 'integer')]
+    #[Assert\NotBlank]
+    #[Assert\Positive]
     private $Quantite;
 
     #[ORM\Column(type: 'datetime')]
+    #[Assert\NotBlank]
     private $date;
 
     #[ORM\ManyToOne(targetEntity: Panier::class, inversedBy: 'ContenuPanier')]
@@ -26,6 +31,12 @@ class ContenuPanier
     #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'Produits')]
     #[ORM\JoinColumn(nullable: false)]
     private $produit;
+
+    public function __construct()
+    {
+        // Renseigne automatiquement la date
+        $this->date = new \DateTime();
+    }
 
     public function getId(): ?int
     {
