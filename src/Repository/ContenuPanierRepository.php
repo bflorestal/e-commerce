@@ -72,6 +72,7 @@ class ContenuPanierRepository extends ServiceEntityRepository
 //        ;
 //    }
 
+// Permet de faire une condition WHERE.
     public function findDetailById($commandes = "2")
     {
         return $this->createQueryBuilder('c')

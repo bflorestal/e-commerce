@@ -2,6 +2,7 @@
 
 {% block body %}
 {% if app.user is not null %}
+ <!-- is_granted permet de savoir si le user connecté possède le ou les groupes -->
 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
 <h1>{{ 'produit.titleAddProduit'|trans }}</h1>
        <a class="btn btn-success" href="{{ path('produit_add_admin') }}">{{ 'add'|trans }}</a>
@@ -28,6 +29,7 @@
         <tr>
             <td><h4>{{ prod.nom }}</h4></td>
             <td>{{ prod.description }}</td>
+             <!-- Mise en place de la photo par default si aucune photo renseigné. -->
              <td>{% if prod.photo is not null %}
                 <img src="{{ asset('uploads/' ~ prod.photo ) }}" onerror="this.src='https://rootcms.elocms.com/assets/images/www.cvm-france.fr/imageUser/none.jpg'" style="width: 200px;" alt="">
                 {% else %}

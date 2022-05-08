@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<!-- app.user permet de savoir si un user est connecté -->
 {% if app.user is not null %}
 <h1>{{ 'compte.Wel'|trans }} {{ app.user.nom }} {{ app.user.prenom }}</h1>
      {% for commande in commandes %}
@@ -15,6 +16,7 @@
             </tr>
        </thead>
     <tbody>
+    <!-- Pour chaque article retourné on affiche les infos -->
      {% for article in articles %}
         <tr>
             <td>{{ article.produit }}</td>
@@ -29,6 +31,7 @@
  <hr>
 
 {% else %}
+<!-- Message demandant de se connecter -->
         <p>{{ 'app.PleaseConnect'|trans }}</p>
 {% endif %}
 {% endblock %}

@@ -12,6 +12,7 @@
                 <th>{{ 'produit.prix'|trans }}</th>
                 <th>{{ 'produit.dispo'|trans }}</th>
                 <th>{{ 'produit.photo'|trans }}</th>
+                 <!-- is_granted permet de savoir si le user connecté possède le ou les groupes -->
                 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')%}
                 {% else %}
                     <th>{{ 'produit.ajouter'|trans }}</th>

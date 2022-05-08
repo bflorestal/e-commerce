@@ -151,6 +151,7 @@ class Panier
         return $this;
     }
 
+    // Retourne l'id pour les jointures
     public function __toString(){
         return $this->id;
     }

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<!-- app.user permet de savoir si un user est connecté -->
 {% if app.user is not null %}
 <h1>{{ 'compte.Wel'|trans }} {{ app.user.nom }} {{ app.user.prenom }}</h1>
     <table class="table" border="1">
@@ -69,6 +70,7 @@
 {% endif %}
 
  <hr>
+ <!-- is_granted permet de savoir si le user connecté possède le ou les groupes -->
  {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN')%}
 <h1>{{ 'compte.AdminPartOne'|trans }}</h1>
     <a class="btn btn-warning" href="{{ path('app_produit') }}">{{ 'compte.GestionProduit'|trans }}</a>
