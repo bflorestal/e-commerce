@@ -27,6 +27,7 @@ class PanierController extends AbstractController
         // Deuxième requete on recupère le detail du panier
         $articles = $em->getRepository(ContenuPanier::class)->findDetailById($commandes);
 
+        // On retourne les articles dans la vues
         return $this->render('panier/index.html.twig', [
             'paniers' => $articles,
         ]);
@@ -35,20 +36,24 @@ class PanierController extends AbstractController
     #[Route('/panierAdd/{id}', name: 'app_panier_add')]
     public function detail(Request $request, ManagerRegistry $doctrine, EntityManagerInterface $em): Response
     {
+        // Récupération des params dans l'url
         $params = $request->attributes->get('_route_params');
 
-        // Connexion à la base de données
+        // Connexion bdd
         $em = $doctrine->getManager();
         $panier = new Panier();
         
+        // Mise en place du form
         $form = $this->createForm(PanierType::class, $panier);
         $form->handleRequest($request);
 
+        // Récupérations des params + requetes
         $iduser = $request->attributes->get('_route_params');
         $em = $doctrine->getManager();
         $commandes = $em->getRepository(Panier::class)->findOrderByIdNull($iduser);
         $articles = $em->getRepository(ContenuPanier::class)->findDetailById($commandes);
 
+        // On retourne les articles dans la vues
         return $this->render('panier/index.html.twig', [
             'paniers' => $articles,
         ]);

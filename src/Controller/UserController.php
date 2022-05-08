@@ -37,6 +37,7 @@ class UserController extends AbstractController
          ]);
     }
 
+    // Route permettant de modifier un profil
     #[Route('/editProfile/{id}', name:'app_edit_profil')]
     public function editprofile(User $user = null, Request $request, ManagerRegistry $doctrine, TranslatorInterface $translator){
         if($user == null){
@@ -47,6 +48,7 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
+        // Verification des données saisies
         if($form->isSubmitted() && $form->isValid()){
 
             $em = $doctrine->getManager();

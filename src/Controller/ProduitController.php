@@ -83,11 +83,13 @@ class ProduitController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
+            // récupération de la photo
             $photo = $form->get('photo')->getData();
 
             if ($photo) {
                 $newFilename = uniqid().'.'.$photo->guessExtension();
 
+                // Vérification de la possibilité de l'ajouter ou non
                 try {
                     $photo->move(
                         $this->getParameter('upload_directory'),
@@ -101,17 +103,20 @@ class ProduitController extends AbstractController
                 $produit->setPhoto($newFilename);
             }
             
+            // Connexion + ajout des données en base
             $em = $doctrine->getManager();
             $em->persist($produit);
             $em->flush();
             $this->addFlash('success', $translator->trans('JeuxAjout'));
         }
 
+    // On crée le form sur la vue
      return $this->render('produit/AjoutAdmin.html.twig', [
         'ajoutProduit' => $form->createView(),
      ]);
     }
 
+    // Route permettant d'editer un produit
     #[Route('/produit/{id}', name:'produit_edit')]
     public function edit(Produit $produit = null, Request $request, ManagerRegistry $doctrine, TranslatorInterface $translator){
         if($produit == null){
@@ -146,8 +151,10 @@ class ProduitController extends AbstractController
      ]);
     }
 
+    // route permettant de suprimer un produit en fonction de son id
     #[Route('/produit/delete/{id}', name:'produit_delete')]
     public function delete(Produit $produit = null, ManagerRegistry $doctrine, TranslatorInterface $translator){
+        // Si l'id du produit n'existe pas alors erreur + renvoie vers les produits
         if($produit == null){
             $this->addFlash('danger', $translator->trans('JeuxIntrouvable'));
             return $this->redirectToRoute('app_produit');
