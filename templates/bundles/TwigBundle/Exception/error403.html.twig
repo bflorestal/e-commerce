@@ -1,8 +1,8 @@
-{# templates/bundles/TwigBundle/Exception/error.html.twig #}
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ 'Error.NotFound'|trans }} : {{ 'error'|trans }}</h1>
+    <h1>{{ 'Error.AccessDenied'|trans }} : 403</h1>
 
     <p>
         {{ 'Error.Message'|trans }} <a href="{{ path('app_produit') }}">{{ 'Error.ReturnHome'|trans }}</a>.

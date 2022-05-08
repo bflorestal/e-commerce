@@ -91,3 +91,13 @@ Commande:
   DateCommande: Date of the order
   TotalCommande: Total order
   Prix: Price
+
+# Error pages
+
+error: ERROR
+Error:
+  AccessDenied: Access denied
+  NotFound: Page not found
+  ServerError: Erreur serveur
+  Message: The requested page couldn't be located. Checkout for any URL misspelling or
+  ReturnHome: return to the homepage

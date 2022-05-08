@@ -91,3 +91,13 @@ Commande:
   DateCommande: Date de la commande
   TotalCommande: Total de la commande
   Prix: Prix
+
+# Error pages
+
+error: ERREUR
+Error:
+  AccessDenied: Accès refusé
+  NotFound: Page introuvable
+  ServerError: Erreur serveur
+  Message: La page demandée n'a pas pu être localisée. Vérifiez que l'URL n'est pas mal orthographiée ou
+  ReturnHome: retournez à l'accueil

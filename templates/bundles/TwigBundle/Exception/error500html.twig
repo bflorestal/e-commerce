@@ -2,10 +2,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Page not found : 500</h1>
+    <h1>{{ 'Error.ServerError'|trans }} : 500</h1>
 
     <p>
-        The requested page couldn't be located. Checkout for any URL
-        misspelling or <a href="{{ path('app_produit') }}">return to the homepage</a>.
+        {{ 'Error.Message'|trans }} <a href="{{ path('app_produit') }}">{{ 'Error.ReturnHome'|trans }}</a>.
     </p>
 {% endblock %}
